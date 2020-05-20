@@ -208,38 +208,7 @@ namespace Demo_BTL
 
         private void txtDiemThi1_TextChanged(object sender, EventArgs e)
         {
-            double DIEMTHI, DIEMTB, DIEMTK;
-
-            if (txtDiemThi1.Text == "")
-            {
-                this.txtDiemThi1.Text = "0";
-                DIEMTB = double.Parse(this.txtDiemTB.Text);
-                DIEMTK = (0.3 * DIEMTB + 0.7 * 0);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            else if (txtDiemTB.Text == "")
-            {
-                this.txtDiemTB.Text = "0";
-                DIEMTHI = double.Parse(this.txtDiemThi1.Text);
-                DIEMTK = (0.3 * 0 + 0.7 * DIEMTHI);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            else
-            {
-                DIEMTHI = double.Parse(this.txtDiemThi1.Text);
-                DIEMTB = double.Parse(this.txtDiemTB.Text);
-                DIEMTK = (0.3 * DIEMTB + 0.7 * DIEMTHI);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            DIEMTK = double.Parse(this.txtDiemTK.Text);
-            if (DIEMTK <= 4.5)
-            {
-                this.txtGhiChu.Text = "Thi lại";
-            }
-            else
-            {
-                this.txtGhiChu.Text = "";
-            }
+            
         }
 
         private void txtDiemTB_TextChanged(object sender, EventArgs e)
