@@ -13,13 +13,12 @@ namespace Demo_BTL
 {
     public partial class frmQLDiem : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=Quanlydiem;Integrated Security=True";
+        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmQLDiem()
         {
             InitializeComponent();
             load_gridDiem();
-            load_cbbKhoa();
             load_cbbLop();
             load_cbbMon();
         }
@@ -33,23 +32,6 @@ namespace Demo_BTL
             adapter.SelectCommand = cmd;
             adapter.Fill(table);
             dgvDiem.DataSource = table;
-        }
-        private void load_cbbKhoa()
-        {
-            connection = new SqlConnection(str);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblKHOA", connection);
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = cmd;
-            adapter.Fill(table);
-            DataRow dr = table.NewRow();
-            dr["MaKhoa"] = "";
-            dr["TenKhoa"] = "---Chọn Khoa---";
-            table.Rows.InsertAt(dr, 0);
-            cbbKhoa.DataSource = table;
-            cbbKhoa.DisplayMember = "TenKhoa";
-            cbbKhoa.ValueMember = "MaKhoa";
         }
         private void load_cbbLop()
         {
@@ -108,11 +90,6 @@ namespace Demo_BTL
                 errorProvider1.SetError(cbbLop, "Mã lớp không để trống!");
                 cbbLop.Focus();
             }
-            else if (cboHocKi.Text == "")
-            {
-                errorProvider1.SetError(cboHocKi, "Học kỳ không để trống!");
-                cboHocKi.Focus();
-            }
             else if (cbbMon.Text == "")
             {
                 errorProvider1.SetError(cbbMon, "Mã môn không để trống!");
@@ -122,10 +99,9 @@ namespace Demo_BTL
             {
                 reader.Dispose();
                 cmd.Dispose();
-                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblKET_QUA(MaSV,HoTen,MaLop,MaMon,DiemThiLan1,DiemTB,DiemTongket,HanhKiem,HocKi,GhiChu)" +
-                                                      "Values('" + txtMaSV.Text + "',N'" + txtHoTen.Text + "','" + cbbLop.Text + "',N'" + cbbMon.Text + "','" + txtDiemThi1.Text + "','" +
-                                                      txtDiemTB.Text + "','" + txtDiemTK.Text + "',N'" +
-                                                      cboHocKi.Text + "',N'" + txtGhiChu.Text + "')", connection);
+                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblKET_QUA(MaSV,HoTen,MaLop,MaMon,DiemCC,DiemGK,DiemCK,DiemTK,GhiChu)" +
+                                                      "Values('" + txtMaSV.Text + "',N'" + txtHoTen.Text + "','" + cbbLop.SelectedValue.ToString() + "',N'" + cbbMon.SelectedValue.ToString() + "','" + txtDiemCC.Text + "','" +
+                                                      txtDiemGK.Text + "','" + txtDiemCK.Text + "',N'" + txtDiemTK.Text + "',N'" + txtGhiChu.Text + "')", connection);
                 cmdINSERT.ExecuteNonQuery();
                 load_gridDiem();
                 MessageBox.Show("Nhập thông tin thành công", "Thông báo!");
@@ -144,19 +120,6 @@ namespace Demo_BTL
             cmd.Dispose();
         }
 
-        private void cboHocKi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cbbMon.Items.Clear();
-            //SqlCommand cmd = new SqlCommand("Select MaMon from tblMON where HocKi='" + cboHocKi.Text + "'", connection);
-            //SqlDataReader reader = cmd.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    cbbMon.Items.Add(reader.GetString(0));
-            //}
-            //reader.Dispose();
-            //cmd.Dispose();
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (txtMaSV.Text == "")
@@ -165,10 +128,9 @@ namespace Demo_BTL
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("Update tblKET_QUA Set HoTen=N'" + txtHoTen.Text + "',MaMon=N'" + cbbMon.Text + "',MaLop='" +
-                                cbbLop.Text + "',DiemThiLan1='" + txtDiemThi1.Text + "',DiemTB='" + txtDiemTB.Text + "' ,DiemTongket='" +
-                                txtDiemTK.Text + "',HocKi=N'" + cboHocKi.Text + "',GhiChu=N'" +
-                                txtGhiChu.Text + "' where MaSV='" + txtMaSV.Text + "' and MaMon=N'" + cbbMon.Text + "'", connection);
+                SqlCommand cmd = new SqlCommand("Update tblKET_QUA Set HoTen=N'" + txtHoTen.Text + "',MaMon=N'" + cbbMon.SelectedValue.ToString() + "',MaLop='" +
+                                cbbLop.SelectedValue.ToString() + "',DiemCC='" + txtDiemCC.Text + "',DiemGK='" + txtDiemGK.Text + "' ,DiemCK='" +
+                                txtDiemCK.Text + "',DiemTK='" + txtDiemTK.Text + "',GhiChu=N'" + txtGhiChu.Text + "' where MaSV='" + txtMaSV.Text + "' and MaMon=N'" + cbbMon.SelectedValue.ToString() + "'", connection); ;
                 cmd.ExecuteNonQuery();
                 load_gridDiem();
                 MessageBox.Show("Cập nhật dữ liệu thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,10 +156,10 @@ namespace Demo_BTL
             txtHoTen.Text = dgvDiem.Rows[i].Cells[1].Value.ToString();
             cbbLop.Text = dgvDiem.Rows[i].Cells[2].Value.ToString();
             cbbMon.Text = dgvDiem.Rows[i].Cells[3].Value.ToString();
-            txtDiemTB.Text = dgvDiem.Rows[i].Cells[4].Value.ToString();
-            txtDiemThi1.Text = dgvDiem.Rows[i].Cells[5].Value.ToString();
+            txtDiemCC.Text = dgvDiem.Rows[i].Cells[4].Value.ToString();
+            txtDiemGK.Text = dgvDiem.Rows[i].Cells[5].Value.ToString();
             txtDiemTK.Text = dgvDiem.Rows[i].Cells[6].Value.ToString();
-            cboHocKi.Text = dgvDiem.Rows[i].Cells[7].Value.ToString();
+            txtDiemCK.Text = dgvDiem.Rows[i].Cells[7].Value.ToString();
             txtGhiChu.Text = dgvDiem.Rows[i].Cells[8].Value.ToString();
         }
 
@@ -206,39 +168,69 @@ namespace Demo_BTL
             this.Close();
         }
 
-        private void txtDiemThi1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void txtDiemTB_TextChanged(object sender, EventArgs e)
         {
-            double DIEMTHI, DIEMTB, DIEMTK;
+            //double DIEMTHI, DIEMTB, DIEMTK;
 
-            if (txtDiemTB.Text == "")
+            //if (txtDiemCC.Text == "")
+            //{
+            //    this.txtDiemCC.Text = "0";
+            //    DIEMTHI = double.Parse(this.txtDiemGK.Text);
+            //    DIEMTK = (0.3 * 0 + 0.7 * DIEMTHI);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //else if (txtDiemGK.Text == "")
+            //{
+            //    this.txtDiemGK.Text = "0";
+            //    DIEMTB = double.Parse(this.txtDiemCC.Text);
+
+            //    DIEMTK = (0.3 * DIEMTB + 0.7 * 0);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //else
+            //{
+            //    DIEMTHI = double.Parse(this.txtDiemGK.Text);
+            //    DIEMTB = double.Parse(this.txtDiemCC.Text);
+            //    DIEMTK = (0.3 * DIEMTB + 0.7 * DIEMTHI);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //DIEMTK = double.Parse(this.txtDiemTK.Text);
+            //if ((DIEMTK <= 4.5))
+            //{
+            //    this.txtGhiChu.Text = "Thi lại";
+            //}
+            //else
+            //{
+            //    this.txtGhiChu.Text = "";
+            //}
+            double DIEMCC, DIEMGK, DIEMCK, DIEMTK;
+
+            if (txtDiemCC.Text == "")
             {
-                this.txtDiemTB.Text = "0";
-                DIEMTHI = double.Parse(this.txtDiemThi1.Text);
-                DIEMTK = (0.3 * 0 + 0.7 * DIEMTHI);
+                txtDiemCC.Text = "0";
+                DIEMGK = double.Parse(txtDiemGK.Text);
+                DIEMCK = double.Parse(txtDiemCK.Text);
+                DIEMTK = (0.2 * DIEMGK + 0.7 * DIEMCK);
                 this.txtDiemTK.Text = Convert.ToString(DIEMTK);
             }
-            else if (txtDiemThi1.Text == "")
+            else if (txtDiemGK.Text == "")
             {
-                this.txtDiemThi1.Text = "0";
-                DIEMTB = double.Parse(this.txtDiemTB.Text);
-
-                DIEMTK = (0.3 * DIEMTB + 0.7 * 0);
+                txtDiemGK.Text = "0";
+                DIEMCC = double.Parse(txtDiemCC.Text);
+                DIEMCK = double.Parse(txtDiemCK.Text);
+                DIEMTK = (0.1 * DIEMCC + 0.7 * DIEMCK);
                 this.txtDiemTK.Text = Convert.ToString(DIEMTK);
             }
             else
             {
-                DIEMTHI = double.Parse(this.txtDiemThi1.Text);
-                DIEMTB = double.Parse(this.txtDiemTB.Text);
-                DIEMTK = (0.3 * DIEMTB + 0.7 * DIEMTHI);
+                DIEMCC = double.Parse(txtDiemCC.Text);
+                DIEMGK = double.Parse(txtDiemGK.Text);
+                DIEMCK = double.Parse(txtDiemCK.Text);
+                DIEMTK = (0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
                 this.txtDiemTK.Text = Convert.ToString(DIEMTK);
             }
             DIEMTK = double.Parse(this.txtDiemTK.Text);
-            if ((DIEMTK <= 4.5))
+            if ((DIEMTK <= 4.0))
             {
                 this.txtGhiChu.Text = "Thi lại";
             }
@@ -246,6 +238,45 @@ namespace Demo_BTL
             {
                 this.txtGhiChu.Text = "";
             }
+        }
+
+        private void txtDiemTK_TextChanged(object sender, EventArgs e)
+        {
+            //double DIEMCC, DIEMGK, DIEMCK, DIEMTK;
+
+            //if (txtDiemCC.Text == "")
+            //{
+            //    this.txtDiemCC.Text = "0";
+            //    DIEMGK = double.Parse(this.txtDiemGK.Text);
+            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
+            //    DIEMTK = (0.2 * DIEMGK + 0.7 * DIEMCK);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //else if (txtDiemGK.Text == "")
+            //{
+            //    this.txtDiemGK.Text = "0";
+            //    DIEMCC = double.Parse(this.txtDiemCC.Text);
+            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
+            //    DIEMTK = (0.1 * DIEMCC + 0.7 * DIEMCK);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //else
+            //{
+            //    DIEMCC = double.Parse(this.txtDiemCC.Text);
+            //    DIEMGK = double.Parse(this.txtDiemGK.Text);
+            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
+            //    DIEMTK = (0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
+            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
+            //}
+            //DIEMTK = double.Parse(this.txtDiemTK.Text);
+            //if ((DIEMTK <= 4.0))
+            //{
+            //    this.txtGhiChu.Text = "Thi lại";
+            //}
+            //else
+            //{
+            //    this.txtGhiChu.Text = "";
+            //}
         }
     }
 }

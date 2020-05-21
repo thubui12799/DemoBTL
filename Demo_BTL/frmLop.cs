@@ -64,7 +64,6 @@ namespace Demo_BTL
             {
                 errorProvider1.SetError(txtMaLop, "!");
                 MessageBox.Show("Mã lớp đã tồn tại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 txtMaLop.Focus();
             }
             else if (reader.Read())
@@ -92,9 +91,9 @@ namespace Demo_BTL
         private void dgvLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = dgvLop.CurrentRow.Index;
-            cboKhoa.Text = dgvLop.Rows[i].Cells[0].Value.ToString();
-            txtMaLop.Text = dgvLop.Rows[i].Cells[1].Value.ToString();
-            txtTenlop.Text = dgvLop.Rows[i].Cells[2].Value.ToString();
+            cboKhoa.Text = dgvLop.Rows[i].Cells[2].Value.ToString();
+            txtMaLop.Text = dgvLop.Rows[i].Cells[0].Value.ToString();
+            txtTenlop.Text = dgvLop.Rows[i].Cells[1].Value.ToString();
         }
 
         private void btnSua_Click(object sender, EventArgs e)

@@ -45,9 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLop)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -123,9 +123,9 @@
             this.dgvLop.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaKhoa,
             this.MaLop,
-            this.TenLop});
+            this.TenLop,
+            this.MaKhoa});
             this.dgvLop.Location = new System.Drawing.Point(6, 18);
             this.dgvLop.Name = "dgvLop";
             this.dgvLop.Size = new System.Drawing.Size(381, 388);
@@ -217,12 +217,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // MaKhoa
-            // 
-            this.MaKhoa.DataPropertyName = "MaKhoa";
-            this.MaKhoa.HeaderText = "Mã Khoa";
-            this.MaKhoa.Name = "MaKhoa";
-            // 
             // MaLop
             // 
             this.MaLop.DataPropertyName = "MaLop";
@@ -234,6 +228,12 @@
             this.TenLop.DataPropertyName = "TenLop";
             this.TenLop.HeaderText = "Tên Lớp";
             this.TenLop.Name = "TenLop";
+            // 
+            // MaKhoa
+            // 
+            this.MaKhoa.DataPropertyName = "MaKhoa";
+            this.MaKhoa.HeaderText = "Mã Khoa";
+            this.MaKhoa.Name = "MaKhoa";
             // 
             // frmLop
             // 
@@ -276,8 +276,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
     }
 }

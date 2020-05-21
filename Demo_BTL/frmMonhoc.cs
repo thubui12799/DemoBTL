@@ -72,7 +72,7 @@ namespace Demo_BTL
             {
                 reader.Dispose();
                 cmd.Dispose();
-                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblMON(MaMon,TenMon,SoDVHT,MaGV,HocKi,MaKhoa)" +
+                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblMON(MaMon,TenMon,SoDVHT,MaGV,MaKhoa)" +
                                        "Values('" + txtMaMon.Text + "',N'" + txtTenMon.Text + "','" + txtSDVHT.Text + "','" +
                                        txtMaGV.Text + "','" + cboKhoa.SelectedValue.ToString() + "')", connection);
                 cmdINSERT.ExecuteNonQuery();
