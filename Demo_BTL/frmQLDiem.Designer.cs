@@ -60,6 +60,7 @@
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTinh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbbMon = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -130,9 +131,9 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgvDiem);
-            this.groupBox4.Location = new System.Drawing.Point(11, 261);
+            this.groupBox4.Location = new System.Drawing.Point(11, 244);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(742, 202);
+            this.groupBox4.Size = new System.Drawing.Size(742, 219);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách";
@@ -151,9 +152,9 @@
             this.DiemCK,
             this.DiemTK,
             this.GhiChu});
-            this.dgvDiem.Location = new System.Drawing.Point(10, 18);
+            this.dgvDiem.Location = new System.Drawing.Point(10, 19);
             this.dgvDiem.Name = "dgvDiem";
-            this.dgvDiem.Size = new System.Drawing.Size(727, 178);
+            this.dgvDiem.Size = new System.Drawing.Size(727, 177);
             this.dgvDiem.TabIndex = 0;
             this.dgvDiem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiem_CellContentClick);
             // 
@@ -213,15 +214,18 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(103, 74);
+            this.txtGhiChu.Location = new System.Drawing.Point(263, 63);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(274, 41);
+            this.txtGhiChu.Size = new System.Drawing.Size(446, 41);
             this.txtGhiChu.TabIndex = 12;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnTinh);
             this.groupBox2.Controls.Add(this.txtDiemCK);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtGhiChu);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label3);
@@ -229,9 +233,9 @@
             this.groupBox2.Controls.Add(this.txtDiemGK);
             this.groupBox2.Controls.Add(this.txtDiemTK);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(11, 185);
+            this.groupBox2.Location = new System.Drawing.Point(19, 123);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(742, 70);
+            this.groupBox2.Size = new System.Drawing.Size(734, 115);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin chi tiết";
@@ -276,7 +280,6 @@
             this.txtDiemCC.Name = "txtDiemCC";
             this.txtDiemCC.Size = new System.Drawing.Size(72, 20);
             this.txtDiemCC.TabIndex = 8;
-            this.txtDiemCC.TextChanged += new System.EventHandler(this.txtDiemTB_TextChanged);
             // 
             // txtDiemGK
             // 
@@ -287,16 +290,15 @@
             // 
             // txtDiemTK
             // 
-            this.txtDiemTK.Location = new System.Drawing.Point(657, 24);
+            this.txtDiemTK.Location = new System.Drawing.Point(99, 63);
             this.txtDiemTK.Name = "txtDiemTK";
             this.txtDiemTK.Size = new System.Drawing.Size(59, 20);
             this.txtDiemTK.TabIndex = 11;
-            this.txtDiemTK.TextChanged += new System.EventHandler(this.txtDiemTK_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(578, 30);
+            this.label9.Location = new System.Drawing.Point(20, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 13);
             this.label9.TabIndex = 14;
@@ -336,8 +338,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtGhiChu);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbbMon);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbbLop);
@@ -348,15 +348,25 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(19, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(734, 141);
+            this.groupBox1.Size = new System.Drawing.Size(734, 79);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lựa chọn";
             // 
+            // btnTinh
+            // 
+            this.btnTinh.Location = new System.Drawing.Point(605, 24);
+            this.btnTinh.Name = "btnTinh";
+            this.btnTinh.Size = new System.Drawing.Size(54, 23);
+            this.btnTinh.TabIndex = 13;
+            this.btnTinh.Text = "Tính";
+            this.btnTinh.UseVisualStyleBackColor = true;
+            this.btnTinh.Click += new System.EventHandler(this.btnTinh_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 77);
+            this.label2.Location = new System.Drawing.Point(213, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 9;
@@ -476,5 +486,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemTK;
         private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
+        private System.Windows.Forms.Button btnTinh;
     }
 }

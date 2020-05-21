@@ -144,6 +144,7 @@ namespace Demo_BTL
             {
                 SqlCommand cmd = new SqlCommand("delete from tblKET_QUA where MaSV='" + txtMaSV.Text + "' and MaMon='" + cbbMon.Text + "' ", connection);
                 cmd.ExecuteNonQuery();
+                load_gridDiem();
                 MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
                 cmd.Dispose();
             }
@@ -158,9 +159,7 @@ namespace Demo_BTL
             cbbMon.Text = dgvDiem.Rows[i].Cells[3].Value.ToString();
             txtDiemCC.Text = dgvDiem.Rows[i].Cells[4].Value.ToString();
             txtDiemGK.Text = dgvDiem.Rows[i].Cells[5].Value.ToString();
-            txtDiemTK.Text = dgvDiem.Rows[i].Cells[6].Value.ToString();
-            txtDiemCK.Text = dgvDiem.Rows[i].Cells[7].Value.ToString();
-            txtGhiChu.Text = dgvDiem.Rows[i].Cells[8].Value.ToString();
+            txtDiemCK.Text = dgvDiem.Rows[i].Cells[6].Value.ToString();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -168,68 +167,13 @@ namespace Demo_BTL
             this.Close();
         }
 
-        private void txtDiemTB_TextChanged(object sender, EventArgs e)
+        private void btnTinh_Click(object sender, EventArgs e)
         {
-            //double DIEMTHI, DIEMTB, DIEMTK;
-
-            //if (txtDiemCC.Text == "")
-            //{
-            //    this.txtDiemCC.Text = "0";
-            //    DIEMTHI = double.Parse(this.txtDiemGK.Text);
-            //    DIEMTK = (0.3 * 0 + 0.7 * DIEMTHI);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //else if (txtDiemGK.Text == "")
-            //{
-            //    this.txtDiemGK.Text = "0";
-            //    DIEMTB = double.Parse(this.txtDiemCC.Text);
-
-            //    DIEMTK = (0.3 * DIEMTB + 0.7 * 0);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //else
-            //{
-            //    DIEMTHI = double.Parse(this.txtDiemGK.Text);
-            //    DIEMTB = double.Parse(this.txtDiemCC.Text);
-            //    DIEMTK = (0.3 * DIEMTB + 0.7 * DIEMTHI);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //DIEMTK = double.Parse(this.txtDiemTK.Text);
-            //if ((DIEMTK <= 4.5))
-            //{
-            //    this.txtGhiChu.Text = "Thi lại";
-            //}
-            //else
-            //{
-            //    this.txtGhiChu.Text = "";
-            //}
-            double DIEMCC, DIEMGK, DIEMCK, DIEMTK;
-
-            if (txtDiemCC.Text == "")
-            {
-                txtDiemCC.Text = "0";
-                DIEMGK = double.Parse(txtDiemGK.Text);
-                DIEMCK = double.Parse(txtDiemCK.Text);
-                DIEMTK = (0.2 * DIEMGK + 0.7 * DIEMCK);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            else if (txtDiemGK.Text == "")
-            {
-                txtDiemGK.Text = "0";
-                DIEMCC = double.Parse(txtDiemCC.Text);
-                DIEMCK = double.Parse(txtDiemCK.Text);
-                DIEMTK = (0.1 * DIEMCC + 0.7 * DIEMCK);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            else
-            {
-                DIEMCC = double.Parse(txtDiemCC.Text);
-                DIEMGK = double.Parse(txtDiemGK.Text);
-                DIEMCK = double.Parse(txtDiemCK.Text);
-                DIEMTK = (0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
-                this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            }
-            DIEMTK = double.Parse(this.txtDiemTK.Text);
+            float DIEMCC = float.Parse(txtDiemCC.Text);
+            float DIEMGK = float.Parse(txtDiemGK.Text);
+            float DIEMCK = float.Parse(txtDiemCK.Text);
+            txtDiemTK.Text = Convert.ToString(0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
+            float DIEMTK = float.Parse(this.txtDiemTK.Text);
             if ((DIEMTK <= 4.0))
             {
                 this.txtGhiChu.Text = "Thi lại";
@@ -238,45 +182,6 @@ namespace Demo_BTL
             {
                 this.txtGhiChu.Text = "";
             }
-        }
-
-        private void txtDiemTK_TextChanged(object sender, EventArgs e)
-        {
-            //double DIEMCC, DIEMGK, DIEMCK, DIEMTK;
-
-            //if (txtDiemCC.Text == "")
-            //{
-            //    this.txtDiemCC.Text = "0";
-            //    DIEMGK = double.Parse(this.txtDiemGK.Text);
-            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
-            //    DIEMTK = (0.2 * DIEMGK + 0.7 * DIEMCK);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //else if (txtDiemGK.Text == "")
-            //{
-            //    this.txtDiemGK.Text = "0";
-            //    DIEMCC = double.Parse(this.txtDiemCC.Text);
-            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
-            //    DIEMTK = (0.1 * DIEMCC + 0.7 * DIEMCK);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //else
-            //{
-            //    DIEMCC = double.Parse(this.txtDiemCC.Text);
-            //    DIEMGK = double.Parse(this.txtDiemGK.Text);
-            //    DIEMCK = double.Parse(this.txtDiemCK.Text);
-            //    DIEMTK = (0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
-            //    this.txtDiemTK.Text = Convert.ToString(DIEMTK);
-            //}
-            //DIEMTK = double.Parse(this.txtDiemTK.Text);
-            //if ((DIEMTK <= 4.0))
-            //{
-            //    this.txtGhiChu.Text = "Thi lại";
-            //}
-            //else
-            //{
-            //    this.txtGhiChu.Text = "";
-            //}
         }
     }
 }

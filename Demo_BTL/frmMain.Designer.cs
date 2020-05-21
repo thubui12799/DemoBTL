@@ -106,10 +106,9 @@
             this.mnuHeThong.Size = new System.Drawing.Size(69, 20);
             this.mnuHeThong.Text = "Hệ thống";
             // 
-            // mnuHeThongLogin
+            // heThongToolStripMenuItem
             // 
-            this.mnuHeThongLogin.Image = global::Demo_BTL.Properties.Resources.login;
-            this.mnuHeThongLogin.Name = "mnuHeThongLogin";
+            this.mnuHeThongLogin.Name = "heThongMenuToolStripItem";
             this.mnuHeThongLogin.Size = new System.Drawing.Size(180, 22);
             this.mnuHeThongLogin.Text = "Đăng nhập";
             this.mnuHeThongLogin.Click += new System.EventHandler(this.đăngNhậpToolStripMenuItem_Click);
