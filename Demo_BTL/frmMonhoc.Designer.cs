@@ -39,8 +39,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboKhoa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtHocKy = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtMaGV = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSDVHT = new System.Windows.Forms.TextBox();
@@ -50,13 +48,12 @@
             this.txtMaMon = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDVHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HocKi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMON)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -135,7 +132,6 @@
             this.TenMon,
             this.SoDVHT,
             this.MaGV,
-            this.HocKi,
             this.MaKhoa});
             this.dgvMON.Location = new System.Drawing.Point(6, 18);
             this.dgvMON.Name = "dgvMON";
@@ -147,8 +143,6 @@
             // 
             this.groupBox1.Controls.Add(this.cboKhoa);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtHocKy);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtMaGV);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSDVHT);
@@ -170,7 +164,7 @@
             // cboKhoa
             // 
             this.cboKhoa.FormattingEnabled = true;
-            this.cboKhoa.Location = new System.Drawing.Point(106, 238);
+            this.cboKhoa.Location = new System.Drawing.Point(106, 208);
             this.cboKhoa.Name = "cboKhoa";
             this.cboKhoa.Size = new System.Drawing.Size(145, 23);
             this.cboKhoa.TabIndex = 23;
@@ -179,27 +173,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(21, 241);
+            this.label6.Location = new System.Drawing.Point(21, 211);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 15);
             this.label6.TabIndex = 22;
             this.label6.Text = "Mã khoa";
-            // 
-            // txtHocKy
-            // 
-            this.txtHocKy.Location = new System.Drawing.Point(106, 196);
-            this.txtHocKy.Name = "txtHocKy";
-            this.txtHocKy.Size = new System.Drawing.Size(145, 22);
-            this.txtHocKy.TabIndex = 21;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 203);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 15);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Học kỳ";
             // 
             // txtMaGV
             // 
@@ -276,6 +254,10 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Danh sách môn học";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // MaMon
             // 
             this.MaMon.DataPropertyName = "MaMon";
@@ -300,21 +282,11 @@
             this.MaGV.HeaderText = "Mã GV";
             this.MaGV.Name = "MaGV";
             // 
-            // HocKi
-            // 
-            this.HocKi.DataPropertyName = "HocKi";
-            this.HocKi.HeaderText = "Học Kì";
-            this.HocKi.Name = "HocKi";
-            // 
             // MaKhoa
             // 
             this.MaKhoa.DataPropertyName = "MaKhoa";
             this.MaKhoa.HeaderText = "Mã Khoa";
             this.MaKhoa.Name = "MaKhoa";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // frmMonhoc
             // 
@@ -351,8 +323,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboKhoa;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtHocKy;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMaGV;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSDVHT;
@@ -362,12 +332,11 @@
         private System.Windows.Forms.TextBox txtMaMon;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoDVHT;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HocKi;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

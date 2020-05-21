@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class frmMonhoc : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=Quanlydiem;Integrated Security=True";
+        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmMonhoc()
         {
@@ -74,7 +74,7 @@ namespace Demo_BTL
                 cmd.Dispose();
                 SqlCommand cmdINSERT = new SqlCommand("Insert Into tblMON(MaMon,TenMon,SoDVHT,MaGV,HocKi,MaKhoa)" +
                                        "Values('" + txtMaMon.Text + "',N'" + txtTenMon.Text + "','" + txtSDVHT.Text + "','" +
-                                       txtMaGV.Text + "','" + txtHocKy.Text + "','" + cboKhoa.SelectedValue.ToString() + "')", connection);
+                                       txtMaGV.Text + "','" + cboKhoa.SelectedValue.ToString() + "')", connection);
                 cmdINSERT.ExecuteNonQuery();
                 load_gridMon();
                 MessageBox.Show("Nhập thông tin thành công", "Thông báo!");
@@ -87,8 +87,7 @@ namespace Demo_BTL
         private void btnSua_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand("Update tblMON Set TenMon=N'" + txtTenMon.Text + "',SoDVHT='" +
-                            txtSDVHT.Text + "',MaGV='" + txtMaGV.Text + "',HocKi='" +
-                            txtHocKy.Text + "',MaKhoa='" + cboKhoa.Text + "' where MaMon='" + txtMaMon.Text + "' ", connection);
+                            txtSDVHT.Text + "',MaGV='" + txtMaGV.Text + "',MaKhoa='" + cboKhoa.Text + "' where MaMon='" + txtMaMon.Text + "' ", connection);
             cmd.ExecuteNonQuery();
             load_gridMon();
             MessageBox.Show("Cập nhật dữ liệu thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -102,8 +101,7 @@ namespace Demo_BTL
             txtTenMon.Text = dgvMON.Rows[i].Cells[1].Value.ToString();
             txtSDVHT.Text = dgvMON.Rows[i].Cells[2].Value.ToString();
             txtMaGV.Text = dgvMON.Rows[i].Cells[3].Value.ToString();
-            txtHocKy.Text = dgvMON.Rows[i].Cells[4].Value.ToString();
-            cboKhoa.Text = dgvMON.Rows[i].Cells[5].Value.ToString();
+            cboKhoa.Text = dgvMON.Rows[i].Cells[4].Value.ToString();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

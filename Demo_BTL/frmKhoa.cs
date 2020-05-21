@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class frmKhoa : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=Quanlydiem;Integrated Security=True";
+        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmKhoa()
         {
@@ -102,7 +102,6 @@ namespace Demo_BTL
             }
             else if (MessageBox.Show("Bạn có chắc chắn muốn xóa ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Thuc hien xoa du lieu
                 reader.Dispose();
                 cmd.Dispose();
                 SqlCommand cmdDELETE = new SqlCommand("delete from tblKHOA where MaKhoa='" + txtMaKhoa.Text + "'", connection);

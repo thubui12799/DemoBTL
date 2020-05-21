@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class Login : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=Quanlydiem;Integrated Security=True";
+        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public Login()
         {
@@ -30,7 +30,7 @@ namespace Demo_BTL
         {
             connection = new SqlConnection(str);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Select * From tbllogin where tendn='" + txtTenDN.Text + "' and matkhau='" + txtMatKhau.Text + "' and Quyen='Admin'", connection);
+            SqlCommand cmd = new SqlCommand("Select * From tbllogin where TenDN='" + txtTenDN.Text + "' and MatKhau='" + txtMatKhau.Text + "' and Quyen='Admin'", connection);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -50,10 +50,10 @@ namespace Demo_BTL
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Bạn có chắc chắn muốn thoát", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //{
-            //    Application.Exit();
-            //}
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
