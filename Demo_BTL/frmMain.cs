@@ -351,29 +351,23 @@ namespace Demo_BTL
             fMonhoc.Left = 0;
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            menuBarToolStripMenuItem.Checked = false;
-            pictureBox3.Hide();
-            pictureBox2.Hide();
-            btnQLDiem.Hide();
-            btnQLGV.Hide();
-            btnQLKhoa.Hide();
-            btnQLLop.Hide();
-            btnQLMon.Hide();
-            btnQLSV.Hide();
-        }
+        
 
         private void menuBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pictureBox2.Visible = menuBarToolStripMenuItem.Checked;
-            pictureBox3.Visible = menuBarToolStripMenuItem.Checked;
+           
             btnQLDiem.Visible = menuBarToolStripMenuItem.Checked;
             btnQLGV.Visible = menuBarToolStripMenuItem.Checked;
             btnQLKhoa.Visible = menuBarToolStripMenuItem.Checked;
             btnQLLop.Visible = menuBarToolStripMenuItem.Checked;
             btnQLMon.Visible = menuBarToolStripMenuItem.Checked;
             btnQLSV.Visible = menuBarToolStripMenuItem.Checked;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void ShowNewForm(object sender, EventArgs e)

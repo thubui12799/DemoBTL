@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class frmKhoa : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
+        string str = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmKhoa()
         {
