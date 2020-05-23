@@ -22,8 +22,7 @@ namespace Demo_BTL
 
         private void Login_Load(object sender, EventArgs e)
         {
-            cbbName.Items.Add(SystemInformation.UserDomainName.ToString() + "\\SQLServer");
-            cbbName.Text = cbbName.Items[0].ToString();
+  
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -51,8 +50,7 @@ namespace Demo_BTL
         private void btnThoat_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn thoát", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Application.Exit();
+            {               Application.Exit();
             }
         }
     }
