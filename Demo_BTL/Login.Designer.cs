@@ -34,8 +34,6 @@
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
-            this.cbbName = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenDN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,8 +76,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtMatKhau);
-            this.groupBox1.Controls.Add(this.cbbName);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtTenDN);
             this.groupBox1.Controls.Add(this.label2);
@@ -93,38 +89,18 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(210, 128);
+            this.txtMatKhau.Location = new System.Drawing.Point(210, 107);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(188, 22);
             this.txtMatKhau.TabIndex = 2;
-            // 
-            // cbbName
-            // 
-            this.cbbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbName.FormattingEnabled = true;
-            this.cbbName.Location = new System.Drawing.Point(210, 29);
-            this.cbbName.Name = "cbbName";
-            this.cbbName.Size = new System.Drawing.Size(188, 23);
-            this.cbbName.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 15);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Server Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(44, 135);
+            this.label3.Location = new System.Drawing.Point(44, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 15);
             this.label3.TabIndex = 2;
@@ -133,7 +109,7 @@
             // txtTenDN
             // 
             this.txtTenDN.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenDN.Location = new System.Drawing.Point(210, 81);
+            this.txtTenDN.Location = new System.Drawing.Point(210, 57);
             this.txtTenDN.Name = "txtTenDN";
             this.txtTenDN.Size = new System.Drawing.Size(188, 22);
             this.txtTenDN.TabIndex = 1;
@@ -143,7 +119,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(44, 81);
+            this.label2.Location = new System.Drawing.Point(44, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 15);
             this.label2.TabIndex = 0;
@@ -193,8 +169,6 @@
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtMatKhau;
-        private System.Windows.Forms.ComboBox cbbName;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenDN;
         private System.Windows.Forms.Label label2;

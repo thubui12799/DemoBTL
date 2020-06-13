@@ -153,23 +153,7 @@ namespace Demo_BTL
             frmQLSV.Left = 0;
         }
 
-        private void giảngViênToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form frm = frmMain.ActiveForm;
-            foreach (Form f in frm.MdiChildren)
-            {
-                if (f.Name == "frmGiangVien")
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            Form frmQLGV = new frmGiangVien();
-            frmQLGV.MdiParent = this;
-            frmQLGV.Show();
-            frmQLGV.Top = 0;
-            frmQLGV.Left = 0;
-        }
+        
 
         private void điểmMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -189,23 +173,7 @@ namespace Demo_BTL
             frmQLD.Left = 0;
         }
 
-        private void thiLạiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form frm = frmMain.ActiveForm;
-            foreach (Form f in frm.MdiChildren)
-            {
-                if (f.Name == "frmDiemThiLai")
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            Form frmDTL = new frmDiemThiLai();
-            frmDTL.MdiParent = this;
-            frmDTL.Show();
-            frmDTL.Top = 0;
-            frmDTL.Left = 0;
-        }
+       
 
         private void danhSáchSVThiLạiToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -261,23 +229,7 @@ namespace Demo_BTL
             frmQLSV.Left = 0;
         }
 
-        private void btnQLGV_Click(object sender, EventArgs e)
-        {
-            Form frm = frmMain.ActiveForm;
-            foreach (Form f in frm.MdiChildren)
-            {
-                if (f.Name == "frmGiangVien")
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-            Form frmQLGV = new frmGiangVien();
-            frmQLGV.MdiParent = this;
-            frmQLGV.Show();
-            frmQLGV.Top = 0;
-            frmQLGV.Left = 0;
-        }
+        
 
         private void btnQLDiem_Click(object sender, EventArgs e)
         {
@@ -350,30 +302,48 @@ namespace Demo_BTL
             fMonhoc.Top = 0;
             fMonhoc.Left = 0;
         }
+        
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            menuBarToolStripMenuItem.Checked = false;
-            pictureBox3.Hide();
-            pictureBox2.Hide();
-            btnQLDiem.Hide();
-            btnQLGV.Hide();
-            btnQLKhoa.Hide();
-            btnQLLop.Hide();
-            btnQLMon.Hide();
-            btnQLSV.Hide();
+
         }
 
-        private void menuBarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sinhViênToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            pictureBox2.Visible = menuBarToolStripMenuItem.Checked;
-            pictureBox3.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLDiem.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLGV.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLKhoa.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLLop.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLMon.Visible = menuBarToolStripMenuItem.Checked;
-            btnQLSV.Visible = menuBarToolStripMenuItem.Checked;
+            Form frm = frmMain.ActiveForm;
+            foreach (Form f in frm.MdiChildren)
+            {
+                if (f.Name == "frmMonhoc")
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            frmQLSV form = new frmQLSV();
+            form.MdiParent = this;
+            form.Show();
+            form.Top = 0;
+            form.Left = 0;
+
+        }
+
+        private void btnDiemThi_Click(object sender, EventArgs e)
+        {
+            Form frm = frmMain.ActiveForm;
+            foreach (Form f in frm.MdiChildren)
+            {
+                if (f.Name == "frmDiemThi")
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            Form form = new frmDiemThi();
+            form.MdiParent = this;
+            form.Show();
+            form.Top = 0;
+            form.Left = 0;
         }
 
         private void ShowNewForm(object sender, EventArgs e)

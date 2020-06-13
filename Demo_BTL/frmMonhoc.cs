@@ -13,36 +13,53 @@ namespace Demo_BTL
 {
     public partial class frmMonhoc : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
+        string str = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=DiemSV;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmMonhoc()
         {
             InitializeComponent();
-            load_cbbKhoa();
+            load_cbbLop();
             load_gridMon();
+            load_hk();
         }
-        private void load_cbbKhoa()
+        private void load_hk()
         {
             connection = new SqlConnection(str);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblKHOA", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM HOC_KY", connection);
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
             adapter.Fill(table);
             DataRow dr = table.NewRow();
-            dr["MaKhoa"] = "";
-            dr["TenKhoa"] = "---Chọn Khoa---";
+            dr["MaHK"] = "--Chọn--";
             table.Rows.InsertAt(dr, 0);
-            cboKhoa.DataSource = table;
-            cboKhoa.DisplayMember = "TenKhoa";
-            cboKhoa.ValueMember = "MaKhoa";
+            cbbHK.DataSource = table;
+            cbbHK.ValueMember = "MaHK";
+            
+        }
+        private void load_cbbLop()
+        {
+            connection = new SqlConnection(str);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM LOP", connection);
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(table);
+            DataRow dr = table.NewRow();
+            dr["MaLop"] = "";
+            dr["TenLop"] = "---Chọn---";
+            table.Rows.InsertAt(dr, 0);
+            cbbLop.DataSource = table;
+            cbbLop.DisplayMember = "TenLop";
+            cbbLop.ValueMember = "MaLop";
         }
         private void load_gridMon()
         {
             connection = new SqlConnection(str);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblMON", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM MON_HOC", connection);
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
@@ -52,7 +69,7 @@ namespace Demo_BTL
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Select MaMon from tblMON where MaMon='" + txtMaMon.Text + "' ", connection);
+            SqlCommand cmd = new SqlCommand("Select MaMon from MON_HOC where MaMon='" + txtMaMon.Text + "' ", connection);
             SqlDataReader reader = cmd.ExecuteReader();
             errorProvider1.Clear();
             if (txtMaMon.Text == "")
@@ -72,9 +89,9 @@ namespace Demo_BTL
             {
                 reader.Dispose();
                 cmd.Dispose();
-                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblMON(MaMon,TenMon,SoDVHT,MaGV,MaKhoa)" +
+                SqlCommand cmdINSERT = new SqlCommand("Insert Into MON_HOC(MaMon,TenMon,SoDVHT,MaHK, MaLop)" +
                                        "Values('" + txtMaMon.Text + "',N'" + txtTenMon.Text + "','" + txtSDVHT.Text + "','" +
-                                       txtMaGV.Text + "','" + cboKhoa.SelectedValue.ToString() + "')", connection);
+                                       cbbHK.Text + "','" + cbbLop.SelectedValue.ToString() + "')", connection);
                 cmdINSERT.ExecuteNonQuery();
                 load_gridMon();
                 MessageBox.Show("Nhập thông tin thành công", "Thông báo!");
@@ -86,8 +103,8 @@ namespace Demo_BTL
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Update tblMON Set TenMon=N'" + txtTenMon.Text + "',SoDVHT='" +
-                            txtSDVHT.Text + "',MaGV='" + txtMaGV.Text + "',MaKhoa='" + cboKhoa.Text + "' where MaMon='" + txtMaMon.Text + "' ", connection);
+            SqlCommand cmd = new SqlCommand("Update MON_HOC Set TenMon=N'" + txtTenMon.Text + "',SoDVHT='" +
+                            txtSDVHT.Text + "', MaHK = '" + cbbHK.SelectedValue.ToString() + "',MaLop='" + cbbLop.SelectedValue.ToString() + "' where MaMon='" + txtMaMon.Text + "' ", connection);
             cmd.ExecuteNonQuery();
             load_gridMon();
             MessageBox.Show("Cập nhật dữ liệu thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -100,8 +117,8 @@ namespace Demo_BTL
             txtMaMon.Text = dgvMON.Rows[i].Cells[0].Value.ToString();
             txtTenMon.Text = dgvMON.Rows[i].Cells[1].Value.ToString();
             txtSDVHT.Text = dgvMON.Rows[i].Cells[2].Value.ToString();
-            txtMaGV.Text = dgvMON.Rows[i].Cells[3].Value.ToString();
-            cboKhoa.Text = dgvMON.Rows[i].Cells[4].Value.ToString();
+            cbbHK.Text = dgvMON.Rows[i].Cells[3].Value.ToString();
+            cbbLop.Text = dgvMON.Rows[i].Cells[4].Value.ToString();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

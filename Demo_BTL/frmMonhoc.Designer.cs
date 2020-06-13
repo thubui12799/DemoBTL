@@ -37,9 +37,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMON = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboKhoa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMaGV = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSDVHT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,11 +47,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbbHK = new System.Windows.Forms.ComboBox();
+            this.cbbLop = new System.Windows.Forms.ComboBox();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDVHT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMON)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -131,8 +131,8 @@
             this.MaMon,
             this.TenMon,
             this.SoDVHT,
-            this.MaGV,
-            this.MaKhoa});
+            this.MaHK,
+            this.MaLop});
             this.dgvMON.Location = new System.Drawing.Point(6, 18);
             this.dgvMON.Name = "dgvMON";
             this.dgvMON.Size = new System.Drawing.Size(455, 371);
@@ -141,9 +141,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboKhoa);
+            this.groupBox1.Controls.Add(this.cbbLop);
+            this.groupBox1.Controls.Add(this.cbbHK);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtMaGV);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSDVHT);
             this.groupBox1.Controls.Add(this.label3);
@@ -161,39 +161,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
             // 
-            // cboKhoa
-            // 
-            this.cboKhoa.FormattingEnabled = true;
-            this.cboKhoa.Location = new System.Drawing.Point(106, 208);
-            this.cboKhoa.Name = "cboKhoa";
-            this.cboKhoa.Size = new System.Drawing.Size(145, 23);
-            this.cboKhoa.TabIndex = 23;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(21, 211);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 15);
+            this.label6.Size = new System.Drawing.Size(45, 15);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Mã khoa";
-            // 
-            // txtMaGV
-            // 
-            this.txtMaGV.Location = new System.Drawing.Point(106, 150);
-            this.txtMaGV.Name = "txtMaGV";
-            this.txtMaGV.Size = new System.Drawing.Size(145, 22);
-            this.txtMaGV.TabIndex = 19;
+            this.label6.Text = "Mã lớp";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(21, 157);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.Size = new System.Drawing.Size(41, 15);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Giảng viên";
+            this.label4.Text = "Học kì";
             // 
             // txtSDVHT
             // 
@@ -258,6 +243,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cbbHK
+            // 
+            this.cbbHK.FormattingEnabled = true;
+            this.cbbHK.Location = new System.Drawing.Point(106, 157);
+            this.cbbHK.Name = "cbbHK";
+            this.cbbHK.Size = new System.Drawing.Size(145, 23);
+            this.cbbHK.TabIndex = 24;
+            // 
+            // cbbLop
+            // 
+            this.cbbLop.FormattingEnabled = true;
+            this.cbbLop.Location = new System.Drawing.Point(106, 211);
+            this.cbbLop.Name = "cbbLop";
+            this.cbbLop.Size = new System.Drawing.Size(145, 23);
+            this.cbbLop.TabIndex = 25;
+            // 
             // MaMon
             // 
             this.MaMon.DataPropertyName = "MaMon";
@@ -276,17 +277,17 @@
             this.SoDVHT.HeaderText = "Số Tiết";
             this.SoDVHT.Name = "SoDVHT";
             // 
-            // MaGV
+            // MaHK
             // 
-            this.MaGV.DataPropertyName = "MaGV";
-            this.MaGV.HeaderText = "Mã GV";
-            this.MaGV.Name = "MaGV";
+            this.MaHK.DataPropertyName = "MaHK";
+            this.MaHK.HeaderText = "Học kì";
+            this.MaHK.Name = "MaHK";
             // 
-            // MaKhoa
+            // MaLop
             // 
-            this.MaKhoa.DataPropertyName = "MaKhoa";
-            this.MaKhoa.HeaderText = "Mã Khoa";
-            this.MaKhoa.Name = "MaKhoa";
+            this.MaLop.DataPropertyName = "MaLop";
+            this.MaLop.HeaderText = "Mã Lớp";
+            this.MaLop.Name = "MaLop";
             // 
             // frmMonhoc
             // 
@@ -321,9 +322,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvMON;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboKhoa;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMaGV;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSDVHT;
         private System.Windows.Forms.Label label3;
@@ -333,10 +332,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbbHK;
+        private System.Windows.Forms.ComboBox cbbLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoDVHT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
     }
 }

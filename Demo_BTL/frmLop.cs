@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class frmLop : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
+        string str = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmLop()
         {
@@ -43,10 +43,10 @@ namespace Demo_BTL
             adapter.Fill(table);
             DataRow dr = table.NewRow();
             dr["MaKhoa"] = "";
-            dr["TenKhoa"] = "---Chọn Khoa---";
+           // dr["TenKhoa"] = "---Chọn Khoa---";
             table.Rows.InsertAt(dr, 0);
             cboKhoa.DataSource = table;
-            cboKhoa.DisplayMember = "TenKhoa";
+            cboKhoa.DisplayMember = "MaKhoa";
             cboKhoa.ValueMember = "MaKhoa";
         }
 
@@ -108,27 +108,15 @@ namespace Demo_BTL
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Select MaLop from tblSINH_VIEN where MaLop='" + txtMaLop.Text + "' ", connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                {
-                    MessageBox.Show("Bạn phải xóa Mã Lớp " + txtMaLop.Text + "từ bảng Sinh Viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
 
-            else if (MessageBox.Show("Bạn có chắc chắn muốn xóa ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                cmd.Dispose();
-                reader.Dispose();
-                SqlCommand cmdDELETE = new SqlCommand("delete from tblLOP where MaLop='" + txtMaLop.Text + "'", connection);
+            SqlConnection conn = new SqlConnection(str);
+                SqlCommand cmdDELETE = new SqlCommand("delete from tblLOP where MaLop='" + txtMaLop.Text + "'", conn);
                 cmdDELETE.ExecuteNonQuery();
-                load_gridLop();
+                
                 MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
                 cmdDELETE.Dispose();
-            }
-            cmd.Dispose();
-            reader.Dispose();
+            load_gridLop();
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

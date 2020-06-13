@@ -13,175 +13,263 @@ namespace Demo_BTL
 {
     public partial class frmQLDiem : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
+        string connect = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public frmQLDiem()
         {
             InitializeComponent();
             load_gridDiem();
-            load_cbbLop();
-            load_cbbMon();
+            load_khoa();
+            load_Mon();
+            
+           
         }
         private void load_gridDiem()
         {
-            connection = new SqlConnection(str);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblKET_QUA", connection);
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = cmd;
-            adapter.Fill(table);
-            dgvDiem.DataSource = table;
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tblKET_QUA", conn);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable tb = new DataTable();
+            da.SelectCommand = cmd;
+            da.Fill(tb);
+            dgvDiem.DataSource = tb;
+            dgvDiem.Refresh();
+
         }
-        private void load_cbbLop()
+
+        private void load_khoa()
         {
-            connection = new SqlConnection(str);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblLOP", connection);
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = cmd;
-            adapter.Fill(table);
-            DataRow dr = table.NewRow();
-            dr["MaLop"] = "";
-            dr["TenLop"] = "---Chọn Lớp---";
-            table.Rows.InsertAt(dr, 0);
-            cbbLop.DataSource = table;
-            cbbLop.DisplayMember = "TenLop";
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Select * from tblKHOA", conn);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataRow dr = dt.NewRow();
+            dr["MaKhoa"] = "";
+            dr["TenKhoa"] = "--Chọn khoa--";
+            dt.Rows.InsertAt(dr, 0);
+            cbbKhoa.DataSource = dt;
+            cbbKhoa.DisplayMember = "TenKhoa";
+            cbbKhoa.ValueMember = "MaKhoa";
+            
+            conn.Close();
+        }
+        private void load_Mon()
+        {
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Select * from tblMON", conn);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DataRow dr = dt.NewRow();
+            dr["MaMon"] = "--------------";
+ 
+            dt.Rows.InsertAt(dr, 0);
+            cbbMon.DataSource = dt;
+            cbbMon.DisplayMember = "MaMon";
+            cbbMon.ValueMember = "MaMon";
+            conn.Close();
+        }
+       
+       
+        private void frmQLDiem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbKhoa_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string p_khoa = cbbKhoa.SelectedValue.ToString();
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Select * from tblLOP where MaKhoa = N'" + p_khoa + "'", conn);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DataRow dr = dt.NewRow();
+            dr["MaLop"] = "--Chọn lớp--";
+            dt.Rows.InsertAt(dr, 0);
+            cbbLop.DataSource = dt;
             cbbLop.ValueMember = "MaLop";
         }
-        private void load_cbbMon()
+
+     /*   private void cbbLop_SelectedValueChanged(object sender, EventArgs e)
         {
-            connection = new SqlConnection(str);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM tblMON", connection);
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = cmd;
-            adapter.Fill(table);
-            DataRow dr = table.NewRow();
-            dr["MaMon"] = "";
-            dr["TenMon"] = "---Chọn Môn---";
-            table.Rows.InsertAt(dr, 0);
-            cbbMon.DataSource = table;
-            cbbMon.DisplayMember = "TenMon";
-            cbbMon.ValueMember = "MaMon";
-        }
+            string p_lop = cbbLop.SelectedValue.ToString();
+
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tblSINH_VIEN where MaLop = N'" + p_lop + "'", conn);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataRow dr = dt.NewRow();
+            dr["MaSV"] = "";
+            dr["HoTen"] = "--Chọn sv--";
+            
+            dt.Rows.InsertAt(dr, 0);
+            cbbTen.DataSource = dt;
+            cbbTen.ValueMember = "MaSV";
+            cbbTen.DisplayMember = "HoTen";
+            conn.Close();
+        }*/
+       /* private void load_ten()
+        {
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tblSINH_VIEN ", conn);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataRow dr = dt.NewRow();
+            dr["MaSV"] = "";
+            dr["HoTen"] = "--Chọn sv--";
+
+            dt.Rows.InsertAt(dr, 0);
+            cbbTen.DataSource = dt;
+            cbbTen.ValueMember = "MaSV";
+            cbbTen.DisplayMember = "HoTen";
+            conn.Close();
+        }*/
+
+        
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Select MaSV from tblSINH_VIEN where MaSV=N'" + txtMaSV.Text + "' and Hoten=N'" + txtHoTen.Text + "' ", connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-            errorProvider1.Clear();
-            if (txtMaSV.Text == "")
-            {
-                errorProvider1.SetError(txtMaSV, "Mã sinh viên không để trống!");
-                txtMaSV.Focus();
-            }
-            else if (txtMaSV.Text == dgvDiem.CurrentRow.Cells[0].Value.ToString() && cbbMon.Text == dgvDiem.CurrentRow.Cells[3].Value.ToString())
-            {
-                {
-                    MessageBox.Show("Sinh viên này đã được nhập điểm môn: " + cbbMon.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaSV.Focus();
-                }
-            }
-            else if (cbbLop.Text == "")
-            {
-                errorProvider1.SetError(cbbLop, "Mã lớp không để trống!");
-                cbbLop.Focus();
-            }
-            else if (cbbMon.Text == "")
-            {
-                errorProvider1.SetError(cbbMon, "Mã môn không để trống!");
-                cbbMon.Focus();
-            }
-            else if (reader.Read())
-            {
-                reader.Dispose();
-                cmd.Dispose();
-                SqlCommand cmdINSERT = new SqlCommand("Insert Into tblKET_QUA(MaSV,HoTen,MaLop,MaMon,DiemCC,DiemGK,DiemCK,DiemTK,GhiChu)" +
-                                                      "Values('" + txtMaSV.Text + "',N'" + txtHoTen.Text + "','" + cbbLop.SelectedValue.ToString() + "',N'" + cbbMon.SelectedValue.ToString() + "','" + txtDiemCC.Text + "','" +
-                                                      txtDiemGK.Text + "','" + txtDiemCK.Text + "',N'" + txtDiemTK.Text + "',N'" + txtGhiChu.Text + "')", connection);
-                cmdINSERT.ExecuteNonQuery();
-                load_gridDiem();
-                MessageBox.Show("Nhập thông tin thành công", "Thông báo!");
-                cmdINSERT.Dispose();
-            }
-            else
-            {
-                {
-                    MessageBox.Show("Nhập mã sinh viên không chính xác !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaSV.Focus();
-                }
-                reader.Dispose();
-                cmd.Dispose();
-            }
-            reader.Dispose();
+          string p_masv = cbbTen.SelectedValue.ToString();
+            string p_hoten = cbbTen.Text;
+            string p_lop = cbbLop.SelectedValue.ToString();
+            string p_mon = cbbMon.SelectedValue.ToString();
+            string p_CC = txtCC.Text;
+            string p_KT = txtKT.Text;
+            string p_TH = txtTH.Text;
+
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Insert into tblKET_QUA (MaSV, HoTen, MaLop, MaMon, DiemCC, DiemGK,  DiemTH)" +
+                                       "Values ( N'" + p_masv + "',N'" + p_hoten + "','" + p_lop + "',N'" + p_mon + "','" + p_CC + "','" + p_KT + "',  '" + p_TH + "')", conn);
+            cmd.ExecuteNonQuery();
             cmd.Dispose();
+            MessageBox.Show("Thêm mới thành công!", "Thông báo");
+            load_gridDiem();
+        }
+
+        private void dgvDiem_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+            cbbTen.Text = dgvDiem.Rows[e.RowIndex].Cells[0].Value.ToString();
+            cbbTen.Text = dgvDiem.Rows[e.RowIndex].Cells[1].Value.ToString();
+            cbbLop.Text = dgvDiem.Rows[e.RowIndex].Cells[2].Value.ToString();
+            cbbMon.Text = dgvDiem.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtCC.Text = dgvDiem.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtKT.Text = dgvDiem.Rows[e.RowIndex].Cells[5].Value.ToString();
+           
+
+            cbbTen.Enabled = false;
+            cbbLop.Enabled = false;
+            cbbTen.Enabled = false;
+            cbbKhoa.Enabled = false;
+            cbbMon.Enabled = false;
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (txtMaSV.Text == "")
-            {
-                errorProvider1.SetError(txtMaSV, "Mã sinh viên không để trống!");
-            }
-            else
-            {
-                SqlCommand cmd = new SqlCommand("Update tblKET_QUA Set HoTen=N'" + txtHoTen.Text + "',MaMon=N'" + cbbMon.SelectedValue.ToString() + "',MaLop='" +
-                                cbbLop.SelectedValue.ToString() + "',DiemCC='" + txtDiemCC.Text + "',DiemGK='" + txtDiemGK.Text + "' ,DiemCK='" +
-                                txtDiemCK.Text + "',DiemTK='" + txtDiemTK.Text + "',GhiChu=N'" + txtGhiChu.Text + "' where MaSV='" + txtMaSV.Text + "' and MaMon=N'" + cbbMon.SelectedValue.ToString() + "'", connection); ;
-                cmd.ExecuteNonQuery();
-                load_gridDiem();
-                MessageBox.Show("Cập nhật dữ liệu thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmd.Dispose();
-            }
+            string p_CC = txtCC.Text;
+            string p_KT = txtKT.Text;
+      
+            string p_masv = cbbTen.Text;
+            string p_TH = txtTH.Text;
+
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Update tblKET_QUA set DiemCC = '" + p_CC + "', DiemGK = '" + p_KT + "' ,DiemTH = '" + p_TH + "' where MaSV = '" + p_masv+"' ", conn);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+           MessageBox.Show("Cập nhật thành công!", "Thông báo");
+            load_gridDiem();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                SqlCommand cmd = new SqlCommand("delete from tblKET_QUA where MaSV='" + txtMaSV.Text + "' and MaMon='" + cbbMon.Text + "' ", connection);
-                cmd.ExecuteNonQuery();
-                load_gridDiem();
-                MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
-                cmd.Dispose();
-            }
+            string p_masv = cbbTen.Text;
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Delete from tblKET_QUA where MaSV = '" + p_masv + "' ", conn);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            MessageBox.Show("Đã xóa dữ liệu!", "Thông báo");
+            load_gridDiem();
         }
 
-        private void dgvDiem_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = dgvDiem.CurrentRow.Index;
-            txtMaSV.Text = dgvDiem.Rows[i].Cells[0].Value.ToString();
-            txtHoTen.Text = dgvDiem.Rows[i].Cells[1].Value.ToString();
-            cbbLop.Text = dgvDiem.Rows[i].Cells[2].Value.ToString();
-            cbbMon.Text = dgvDiem.Rows[i].Cells[3].Value.ToString();
-            txtDiemCC.Text = dgvDiem.Rows[i].Cells[4].Value.ToString();
-            txtDiemGK.Text = dgvDiem.Rows[i].Cells[5].Value.ToString();
-            txtDiemCK.Text = dgvDiem.Rows[i].Cells[6].Value.ToString();
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        { 
+            string p_masv = cbbTen.SelectedValue.ToString();
+            string p_hoten = cbbTen.SelectedValue.ToString();
+            string p_lop = cbbLop.SelectedValue.ToString();
+            string p_mon = cbbMon.SelectedValue.ToString();
+
+            
+                 
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Timkiem_ketqua", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@MaSV", SqlDbType.NVarChar, 50).Value = p_masv;
+            cmd.Parameters.Add("@HoTen", SqlDbType.NVarChar, 50).Value = p_hoten;
+            cmd.Parameters.Add("@MaLop", SqlDbType.NVarChar, 50).Value = p_lop;
+            cmd.Parameters.Add("@MaMon", SqlDbType.NVarChar, 50).Value = p_mon;
+
+            
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvDiem.DataSource = dt;
+            dgvDiem.Refresh();
+            conn.Close();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void cbbLop_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            string p_lop = cbbLop.SelectedValue.ToString();
+            SqlConnection conn = new SqlConnection(connect);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tblSINH_VIEN where MaLop = '"+p_lop+"'", conn);
+            cmd.ExecuteNonQuery();
 
-        private void btnTinh_Click(object sender, EventArgs e)
-        {
-            float DIEMCC = float.Parse(txtDiemCC.Text);
-            float DIEMGK = float.Parse(txtDiemGK.Text);
-            float DIEMCK = float.Parse(txtDiemCK.Text);
-            txtDiemTK.Text = Convert.ToString(0.1 * DIEMCC + 0.2 * DIEMGK + 0.7 * DIEMCK);
-            float DIEMTK = float.Parse(this.txtDiemTK.Text);
-            if ((DIEMTK <= 4.0))
-            {
-                this.txtGhiChu.Text = "Thi lại";
-            }
-            else
-            {
-                this.txtGhiChu.Text = "";
-            }
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataRow dr = dt.NewRow();
+            dr["MaSV"] = "";
+            dr["HoTen"] = "--Chọn sv--";
+
+            dt.Rows.InsertAt(dr, 0);
+            cbbTen.DataSource = dt;
+            cbbTen.ValueMember = "MaSV";
+            cbbTen.DisplayMember = "HoTen";
+            conn.Close();
         }
     }
 }

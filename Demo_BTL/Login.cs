@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class Login : Form
     {
-        string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
+        string str = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=QLSV_BTL;Integrated Security=True";
         SqlConnection connection = new SqlConnection();
         public Login()
         {
@@ -22,8 +22,7 @@ namespace Demo_BTL
 
         private void Login_Load(object sender, EventArgs e)
         {
-            cbbName.Items.Add(SystemInformation.UserDomainName.ToString() + "\\SQLServer");
-            cbbName.Text = cbbName.Items[0].ToString();
+            
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -35,7 +34,7 @@ namespace Demo_BTL
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("Đăng nhập vào hệ thống !", "Thông báo !");
+                
                 frmMain frm = new frmMain();
                 frm.Show();
                 cmd.Dispose();

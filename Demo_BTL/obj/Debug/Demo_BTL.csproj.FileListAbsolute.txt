@@ -40,3 +40,24 @@ D:\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.Properties.Resources.resources
 D:\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.csproj.GenerateResource.cache
 D:\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.exe
 D:\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.pdb
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\bin\Debug\Demo_BTL.exe.config
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\bin\Debug\Demo_BTL.exe
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\bin\Debug\Demo_BTL.pdb
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.csprojAssemblyReference.cache
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmDoimatkhau.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmDSHocLai.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmDSThiLai.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmKhoa.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmLop.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmMain.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmMonhoc.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmQLDiem.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmQLSV.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmQuanlinguoidung.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.Login.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.Properties.Resources.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.csproj.GenerateResource.cache
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.exe
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.pdb
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmDiemThi.resources
+C:\Users\BVCN 88\Documents\GitHub\DemoBTL\Demo_BTL\obj\Debug\Demo_BTL.frmDSDiemThi.resources
