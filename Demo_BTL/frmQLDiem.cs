@@ -251,18 +251,6 @@ namespace Demo_BTL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //DiemDetail CR = new DiemDetail();
-            //SqlConnection conn = new SqlConnection(connect);
-            //conn.Open();
-            //SqlCommand cmd = new SqlCommand("DS_DIEM", conn);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.ExecuteNonQuery();
-            //SqlDataAdapter adapter = new SqlDataAdapter();
-            //adapter.SelectCommand = cmd;
-            //DataTable table = new DataTable();
-            //adapter.Fill(table);
-            //DS_DIEM f = new DS_DIEM();
-
             DS_DIEM form = new DS_DIEM();
             form.Show();
             

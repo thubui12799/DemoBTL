@@ -13,7 +13,7 @@ namespace Demo_BTL
 {
     public partial class frmDSThiLai : Form
     {
-        String connect = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=DiemSV;Integrated Security=True";
+        String connect = @"Data Source=THANHTHU\SQLEXPRESS;Initial Catalog=QLD_Nhom3;Integrated Security=True";
         public frmDSThiLai()
         {
             InitializeComponent();
@@ -62,7 +62,7 @@ namespace Demo_BTL
             SqlConnection conn = new SqlConnection(connect);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("DiemHocphan_CHUADAT", conn);
+            SqlCommand cmd = new SqlCommand("ds_CHUADAT", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@MaLop", SqlDbType.NVarChar, 50).Value = cbbLop.SelectedValue.ToString();

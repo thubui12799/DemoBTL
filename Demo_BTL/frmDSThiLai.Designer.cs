@@ -36,13 +36,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnXem = new System.Windows.Forms.Button();
             this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemKT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemTH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemThi1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiemThi2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,14 +96,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSV,
+            this.TenSV,
             this.MaMon,
             this.DiemCC,
             this.DiemKT,
             this.DiemTH,
             this.DiemThi1,
-            this.DiemThi2,
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(32, 167);
+            this.DiemThi2});
+            this.dataGridView1.Location = new System.Drawing.Point(33, 162);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(720, 235);
             this.dataGridView1.TabIndex = 5;
@@ -123,6 +123,12 @@
             this.MaSV.DataPropertyName = "MaSV";
             this.MaSV.HeaderText = "Mã SV";
             this.MaSV.Name = "MaSV";
+            // 
+            // TenSV
+            // 
+            this.TenSV.DataPropertyName = "TenSV";
+            this.TenSV.HeaderText = "Họ tên";
+            this.TenSV.Name = "TenSV";
             // 
             // MaMon
             // 
@@ -144,6 +150,7 @@
             // 
             // DiemTH
             // 
+            this.DiemTH.DataPropertyName = "DiemTH";
             this.DiemTH.HeaderText = "Thực hành";
             this.DiemTH.Name = "DiemTH";
             // 
@@ -159,11 +166,6 @@
             this.DiemThi2.DataPropertyName = "DiemThi2";
             this.DiemThi2.HeaderText = "Điểm thi 2";
             this.DiemThi2.Name = "DiemThi2";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
             // 
             // frmDSThiLai
             // 
@@ -195,12 +197,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemKT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemTH;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemThi1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemThi2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
