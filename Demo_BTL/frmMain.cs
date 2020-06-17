@@ -204,7 +204,7 @@ namespace Demo_BTL
                     return;
                 }
             }
-            Form frmHL = new frmDSHocLai();
+            Form frmHL = new frmDSdiem();
             frmHL.MdiParent = this;
             frmHL.Show();
             frmHL.Top = 0;
@@ -344,6 +344,25 @@ namespace Demo_BTL
             form.Show();
             form.Top = 0;
             form.Left = 0;
+        }
+
+        private void btnDiemDetail_Click(object sender, EventArgs e)
+        {
+
+            Form frm = frmMain.ActiveForm;
+            foreach (Form f in frm.MdiChildren)
+            {
+                if (f.Name == "frmDiemDetail")
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            frmDiemDetail fdiem = new frmDiemDetail();
+            fdiem.MdiParent = this;
+            fdiem.Show();
+            fdiem.Top = 0;
+            fdiem.Left = 0;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
